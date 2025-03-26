@@ -1,0 +1,67 @@
+.country-summary-chart-container {
+  display: flex;
+  flex-direction: row;
+  width: 270px;
+  height: 150px;
+  border: 1px solid rgb(66, 66, 90);
+  background-color: rgb(136, 136, 147);
+  margin: 2px;
+}
+
+.country-summary-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 140px;
+  width: 130px;
+}
+
+.country-summary-bars-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 140px;
+  width: 140px;
+  padding-left: 5px;
+  position: relative;
+  left: -15px;
+}
+
+.country-image {
+  width: 80px;
+  overflow: hidden;
+  border-radius: 40px;
+}
+
+.bar-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.bar-label {
+  font-size: 11px;
+  font-weight: bold;
+  width: 15px;
+  margin-right: 10px;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.country-summary-bar {
+  height: 16px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.positive-bar {
+  background-color: #1eb41e;
+}
+
+.neutral-bar {
+  background-color: #f8dc50;
+}
+
+.negative-bar {
+  background-color: #e03c32;
+}

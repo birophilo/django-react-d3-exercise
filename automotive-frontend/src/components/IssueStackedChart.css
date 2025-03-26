@@ -1,0 +1,15 @@
+.issue-stacked-chart-container {
+  border: 1px solid #ddd;
+  width: 320px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.recharts-cartesian-axis-tick {
+  font-size: 0.8rem;
+  font-family: Roboto, sans-serif;
+}
+
+.stacked-chart-heading {
+  margin-left: 30px;
+}

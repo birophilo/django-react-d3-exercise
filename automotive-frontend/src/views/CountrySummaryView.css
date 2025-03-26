@@ -1,0 +1,9 @@
+.country-summary-view-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 900px;
+  height: 600px;
+  padding: 5px;
+  margin-bottom: 80px;
+  margin-left: 20px;
+}
