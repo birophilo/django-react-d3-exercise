@@ -1,13 +1,5 @@
 # Saatchi exercise (Django-React-D3)
 
-
-
-
-
-# Artfinder exercise
-
-
-
 ## Install backend
 
 ```bash
