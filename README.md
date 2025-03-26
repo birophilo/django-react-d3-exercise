@@ -23,7 +23,7 @@ $ cd django-react-d3-exercise
 $ docker-compose up --build -d
 ```
 
-You should now be able to access:
+Then after a few moments (while React dev server starts), you should be able to access:
 
 - React frontend at http://localhost:3000
 - Django API backend at http://localhost:8000
