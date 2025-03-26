@@ -42,7 +42,7 @@ def import_data():
 
     # crude idempotency check - for rough setup only
     database_count = CustomerFeedback.objects.count()
-    if database_count > 10000:
+    if database_count > 9000:
         print("Database has already been populated; skipping database import.")
         sys.exit(0)
 
