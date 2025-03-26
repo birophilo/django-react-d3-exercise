@@ -40,6 +40,12 @@ def import_data():
         )
         sys.exit(1)
 
+    # crude idempotency check - for rough setup only
+    database_count = CustomerFeedback.objects.count()
+    if database_count > 10000:
+        print("Database has already been populated; skipping database import.")
+        sys.exit(0)
+
     feedback_items = []
 
     for index, line in enumerate(data[1:]):
