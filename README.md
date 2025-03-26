@@ -34,6 +34,9 @@ $ python manage.py import_csv_data.csv
 
 (The data has been excluded from the repo.)
 
+```bash
+$ python manage.py runserver
+```
 
 
 ## Install frontend
