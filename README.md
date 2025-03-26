@@ -2,7 +2,35 @@
 
 
 
-## Install backend
+## Installation: with Docker
+
+Make sure Docker Desktop is running on your machine, then:
+
+```bash
+# clone the repo
+$ git clone git@github.com:birophilo/django-react-d3-exercise.git
+```
+
+Then copy your CSV file `interview-data.csv` into the directory: `django-react-d3-exercise/automotive-backend` (the Django project root directory). This has been deliberately left out of source control. This will be imported into the database during the Docker build.
+
+Then back in your terminal:
+
+```bash
+# cd into repo top level directory
+$ cd django-react-d3-exercise
+
+# build and run the Docker containers
+$ docker-compose up --build -d
+```
+
+You should now be able to access:
+
+- React frontend at http://localhost:3000
+- Django API backend at http://localhost:8000
+
+
+
+## Without Docker: Install backend
 
 ```bash
 # clone the repo
@@ -34,7 +62,7 @@ $ python manage.py runserver
 
 
 
-## Install frontend
+## Without Docker: Install frontend
 
 From the `django-react-d3` project root directory:
 
@@ -47,6 +75,8 @@ $ npm install
 # start the React development server (at http://localhost:3000)
 $ npm start
 ```
+
+(if `npm` is not installed you will need to install it first: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm.)
 
 
 
@@ -76,7 +106,6 @@ The Feedback item is in the format:
 
 ```json
 [
-  ...
   {
     "customer_id": 123456,
     "post_date": "2025-01-03",
@@ -87,7 +116,6 @@ The Feedback item is in the format:
     "feedback_sentiment": "Positive",
     "feedback_subcategory": "Brand/Product Pride"
   }
-  ...
 ]
 ```
 
@@ -111,14 +139,12 @@ It is also possible to group items by date using a `feedbacks/` query parameter.
 
 ```json
 [
-  ...
   {
     "post_date": "2025-01-30",
     "positive": 27,
     "neutral": 16,
     "negative": 19
-  },
-  ...
+  }
 ]
 ```
 

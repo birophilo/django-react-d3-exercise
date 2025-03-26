@@ -1,8 +1,10 @@
+import sys
 from collections import namedtuple
 from datetime import datetime
 
 from django.core.management.base import BaseCommand
 
+from feedback.models import CustomerFeedback
 from feedback.serializers import CustomerFeedbackSerializer
 
 
@@ -28,18 +30,31 @@ Feedback = namedtuple(
 
 
 def import_data():
-    with open('interview-data.csv') as f:
-        data = f.readlines()
+    try:
+        with open('interview-data.csv') as f:
+            data = f.readlines()
+    except FileNotFoundError:
+        print(
+            "ERROR: 'interview-data.csv' not found. This file needs to be copied into "
+            "the 'automotive-backend' directory before building the Docker container."
+        )
+        sys.exit(1)
+
+    feedback_items = []
 
     for index, line in enumerate(data[1:]):
         try:
             row = parse_line(line)
-            save_row_to_db(row)
+            valid_data = parse_row_data(row)
+            if valid_data:
+                feedback_items.append(CustomerFeedback(**valid_data))
         except Exception as e:
             print(f'Error at row {index + 2}')
             print(e)
             print(line)
-            # sys.exit(1)
+
+    if feedback_items:
+        CustomerFeedback.objects.bulk_create(feedback_items)
 
 
 def parse_line(line):
@@ -48,7 +63,7 @@ def parse_line(line):
     return row_tuple
 
 
-def save_row_to_db(row):
+def parse_row_data(row):
     data = {
         'customer_id': int(row.customer_id),
         'post_date': format_date(row.post_date),
@@ -64,7 +79,7 @@ def save_row_to_db(row):
     serializer = CustomerFeedbackSerializer(data=data)
 
     if serializer.is_valid():
-        serializer.save()
+        return serializer.validated_data
     else:
         print(serializer.errors)
 
